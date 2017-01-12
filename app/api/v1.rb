@@ -3,6 +3,10 @@ V1.define do
   on 'users' do
     run V1::UserApi
   end
+
+  on 'deals' do
+    run V1::DealApi
+  end
   
   on get do
     on root do
