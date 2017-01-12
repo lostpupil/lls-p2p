@@ -9,4 +9,15 @@ class User < Sequel::Model
     @password = Password.create(new_password)
     self.encrypted_password = @password
   end
+
+  def detail
+    {
+      user: {
+        id: self.id,
+        money: self.money
+      },
+      payment: [],
+      repaymetn: []
+    }
+  end
 end

@@ -3,26 +3,17 @@ end
 V1::UserApi.define do
   on get do
     on ':id' do |id|
-      user = User.find(id: id)
+      user = User.find(id: id) rescue User.new
       as_json do
-        {
-          data: {
-            user: {
-              money: user.money
-            },
-            payment:[],
-            repayment: []
-          }
-        }
+        { data: user.detail }
       end
     end
   end
 
   on post do
     on root do
-
+      
       on param('username'), param('password') do |username, password|
-
         as_json do
           user = User.new(username: username)
           user.password = password
