@@ -1,15 +1,15 @@
 development:
-  host: 
-  port: 
-  database: 
-  username: 
+  host: localhost
+  port: 5432
+  database: lls_dev
+  username: postgres
   password: 
-  max_connections: 10
+  max_connections: 5
 
 production: 
-  host: 
-  port: 
-  database: 
-  username: 
-  password: 
-  max_connections: 30
+  host: localhost
+  port: 5432
+  database: lls_prod
+  username: lls
+  password: llspwd
+  max_connections: 10
