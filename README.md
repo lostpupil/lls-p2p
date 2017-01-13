@@ -3,6 +3,7 @@
 ## Description
 
 使用Cuba Sequel Postgres Mina Thin     
+https://github.com/lostpupil/cubanana    
 
 1.12 21pm~23:30pm 完成项目的部署以及创建用户查看用户账户的api。    
 查看用户的时候如果输入了非法的uid，会使用User.new来做默认处理。    
@@ -38,3 +39,6 @@ example: GET /api/v1/deals?a=cd39f5b5-557f-4727-9ce7-0d4c3df6f050&b=4863161c-b68
 banana 639b1ce0-7d1f-46cb-a45e-4d9be4e1a794    
 apple 132df720-3ca8-4b14-9f5e-0e2202164b5b     
 watermelon 6eb8b743-2984-4b69-8b1a-e508df878d36
+
+## 一些奇怪的问题
+之前一直觉得cuba的dsl，写起来很整齐，就会觉得很整齐的代码其实本身也需要去重构。Cuba的api框架比Grape少了很多诸如参数验证的地方，这需要你在代码中去自己做判断，如果使用Cuba的话，是没有必要拆分这么多的目录层次以及文件的，这样其实本身违反了simplicity的原则，但是为了项目的可读，可扩展性，于是做出了一些折中的举动。
