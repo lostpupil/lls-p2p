@@ -13,7 +13,6 @@ V1::DealApi.define do
           {data: {payment: payment}}
         end
       rescue Exception => e
-        ap e
         as_json 403 do
           {err: e}
         end
