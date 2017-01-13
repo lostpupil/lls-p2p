@@ -10,11 +10,11 @@ class Deal < Sequel::Model
     {
       payment: {
         records: p_query,
-        total: p_query.map(&:money).reduce(:+)
+        total: p_query.sum(:money)
       },
       repayment: {
         records: rp_query,
-        total: rp_query.map(&:money).reduce(:+)
+        total: rp_query.sum(:money)
       }
     }
   end
@@ -55,8 +55,8 @@ class Repayment < Deal
         raise 'target does not have enough money'
       else
         raise 'target does not have enough money' if u_a.money < 0
-        borrow = Payment.where(a: a, b: b).map(&:money).reduce(:+) || 0
-        lend = Repayment.where(a: a, b: b).map(&:money).reduce(:+) || 0
+        borrow = Payment.where(a: a, b: b).sum(:money)
+        lend = Repayment.where(a: a, b: b).sum(:money)
         debt = borrow - lend
         raise 'target does not own that much' if money > debt #他并不欠你这么多💰
         u_a.update(:money => Sequel.-(:money, money))
