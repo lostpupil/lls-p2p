@@ -10,7 +10,8 @@ class Deal < Sequel::Model
     rp_query = Repayment.where(a: u_a.id, b: u_b.id)
     {
       payment: {
-        records: p_query,
+        records_in: p_query_in,
+        records_out: p_query_out,
         total_in: p_query_in.sum(:money),
         total_out: p_query_out.sum(:money)
       },
