@@ -16,8 +16,8 @@ class User < Sequel::Model
         id: self.id,
         money: self.money
       },
-      payment: [],
-      repaymetn: []
+      payment: Payment.where(a: self.id),
+      repaymetn: Repayment.where(a: self.id)
     }
   end
 end
