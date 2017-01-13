@@ -5,12 +5,14 @@ class Deal < Sequel::Model
     u_a = User.first(id: a) #borrow
     u_b = User.first(id: b) #lend
     raise 'user not found' if u_a.nil? or u_b.nil?
-    p_query = Payment.where(a: u_a.id, b: u_b.id)
+    p_query_in = Payment.where(a: u_a.id, b: u_b.id)
+    p_query_out = Payment.where(b: u_a.id, a: u_b.id)
     rp_query = Repayment.where(a: u_a.id, b: u_b.id)
     {
       payment: {
         records: p_query,
-        total: p_query.sum(:money)
+        total_in: p_query_in.sum(:money),
+        total_out: p_query_out.sum(:money)
       },
       repayment: {
         records: rp_query,
