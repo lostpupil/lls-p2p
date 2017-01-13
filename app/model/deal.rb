@@ -8,7 +8,7 @@ class Payment < Deal
       # for_update is a Pessimistic Locking
       u_a = User.for_update.first(id: a) #borrow
       u_b = User.for_update.first(id: b) #lend
-
+      raise 'user not found' if u_a.nil? or u_b.nil?
       raise 'trick or treat' if money <= 0
       if money > u_b.money
         raise 'target does not have enough money'
