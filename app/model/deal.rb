@@ -1,5 +1,23 @@
 class Deal < Sequel::Model
   plugin :single_table_inheritance, :type
+
+  def self.show_records(a, b)
+    u_a = User.first(id: a) #borrow
+    u_b = User.first(id: b) #lend
+    raise 'user not found' if u_a.nil? or u_b.nil?
+    p_query = Payment.where(a: u_a.id, b: u_b.id)
+    rp_query = Repayment.where(a: u_a.id, b: u_b.id)
+    {
+      payment: {
+        records: p_query,
+        total: p_query.map(&:money).reduce(:+)
+      },
+      repayment: {
+        records: rp_query,
+        total: rp_query.map(&:money).reduce(:+)
+      }
+    }
+  end
 end
 
 class Payment < Deal

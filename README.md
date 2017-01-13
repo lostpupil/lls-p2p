@@ -17,7 +17,8 @@ POST /api/v1/users
 2: -d "username=banana&password=banana&money=100"    
 
 ### 查看一个用户
-GET /api/v1/users/:id
+GET /api/v1/users/:id    
+成功会返回用户的id，money，以及交易的记录，交易的total
 
 ### 发起借款请求
 POST /api/v1/payment    
