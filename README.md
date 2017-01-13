@@ -21,15 +21,19 @@ GET /api/v1/users/:id
 成功会返回用户的id，money，以及交易的记录，交易的total
 
 ### 发起借款请求
-POST /api/v1/payment    
+POST /api/v1/deals/payment    
 -d "a=a的idb=b的id&money=10"    
 a: 借款人 b:被借款人
 
 ### 发起还款请求
-POST /api/v1/repayment    
+POST /api/v1/deals/repayment    
 -d "a=a的idb=b的id&money=10"    
 a: 还款人 b:被还款人
 
 ### 查看a与b之前的交易记录以及金额
 GET /api/v1/deals    
 example: GET /api/v1/deals?a=cd39f5b5-557f-4727-9ce7-0d4c3df6f050&b=4863161c-b68d-47a2-a1ec-caab04863d23
+
+### Demo Account
+banana 639b1ce0-7d1f-46cb-a45e-4d9be4e1a794    
+apple 132df720-3ca8-4b14-9f5e-0e2202164b5b     
