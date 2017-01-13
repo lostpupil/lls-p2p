@@ -37,3 +37,4 @@ example: GET /api/v1/deals?a=cd39f5b5-557f-4727-9ce7-0d4c3df6f050&b=4863161c-b68
 ### Demo Account
 banana 639b1ce0-7d1f-46cb-a45e-4d9be4e1a794    
 apple 132df720-3ca8-4b14-9f5e-0e2202164b5b     
+watermelon 6eb8b743-2984-4b69-8b1a-e508df878d36

@@ -58,7 +58,7 @@ class Repayment < Deal
         borrow = Payment.where(a: a, b: b).map(&:money).reduce(:+) || 0
         lend = Repayment.where(a: a, b: b).map(&:money).reduce(:+) || 0
         debt = borrow - lend
-        raise 'target does not own that much' if money > debt
+        raise 'target does not own that much' if money > debt #他并不欠你这么多💰
         u_a.update(:money => Sequel.-(:money, money))
         u_b.update(money: Sequel.+(:money, money))
         Repayment.create(a: u_a.id, b: u_b.id, money: money, description: "#{u_a.username} return $#{money} from #{u_b.username}")
