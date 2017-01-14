@@ -18,8 +18,8 @@ class User < Sequel::Model
       },
       payment: {
         records_in: Payment.where(a: self.id),
-        records_out: Payment.where(b: self.id),
         total_in: Payment.where(a: self.id).sum(:money),
+        records_out: Payment.where(b: self.id),
         total_out: Payment.where(b: self.id).sum(:money),
       },
       repaymetn: {

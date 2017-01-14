@@ -27,7 +27,7 @@ V1::UserApi.define do
             end
           rescue Exception => e
             as_json do
-              {err: 'username already exists'}
+              {err: e}
             end
           end
         end

@@ -17,9 +17,9 @@ else
 end
 
 # # setup database extensions
-DB.extension :pg_array
-DB.extension :pg_hstore
-DB.extension :pg_json
+# DB.extension :pg_array
+# DB.extension :pg_hstore
+# DB.extension :pg_json
 
 # string extension
 class Object
@@ -36,8 +36,6 @@ Dir["./app/plugin/*.rb"].each { |file| require file }
 Cuba.plugin Cuba::Sugar::As
 Cuba.plugin Cuba::Hawk::Auth
 
-# require some middlewares here
-Dir["./app/middleware/*.rb"].each { |file| require file }
 # require v1, v2, v3
 Dir["./app/api/*.rb"].each { |file| require file }
 # require files in sub directories

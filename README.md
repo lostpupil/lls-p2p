@@ -9,7 +9,9 @@ https://github.com/lostpupil/cubanana
 查看用户的时候如果输入了非法的uid，会使用User.new来做默认处理。    
 1.13 9am~12am 完成借款以及还款的api。    
 这里借款以及还款时候需要注意的条件还是挺多的，除了账户需要账户余额之外，还需要判断用户是不是向另外一个用户借了那么多钱。同时api请求也需要判断ab用户是否存在。如果不存在，则raise一个用户不存在的error。也需要判断a和b是同一个人。   
-1.13 晚上想了一下，发现我一开始只是查询了一半的记录，只有自己的借款，但是没有自己被借款的记录，大意了。
+1.13 晚上想了一下，发现我一开始只是查询了一半的记录，只有自己的借款，但是没有自己被借款的记录，大意了。    
+
+为了方便，这边其实在货币上面都是用的Integer作为单位，单位是分，考虑到Decimal可能对于货币更加适合，但是这边为了简化一些操作于是就用了Integer。
 
 ## API Example
 
@@ -37,8 +39,8 @@ GET /api/v1/deals
 example: GET /api/v1/deals?a=cd39f5b5-557f-4727-9ce7-0d4c3df6f050&b=4863161c-b68d-47a2-a1ec-caab04863d23
 
 ### Demo Account
-banana 639b1ce0-7d1f-46cb-a45e-4d9be4e1a794    
 apple 132df720-3ca8-4b14-9f5e-0e2202164b5b     
+banana 639b1ce0-7d1f-46cb-a45e-4d9be4e1a794    
 watermelon 6eb8b743-2984-4b69-8b1a-e508df878d36
 
 ## 一些奇怪的问题
